@@ -1,10 +1,151 @@
 @charset "utf-8";
-* 						{margin: 0; padding: 0;}
-body					{font: 16px Georgia, serif;}
-#page-wrap				{margin: 2% auto; color: white;}
-#page-wrap >.main 		{border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black;}
-section > div			{padding: 5px;}
-header, nav, section	{background: #eee; text-align: center;}
-footer					{background: #eee; text-align: center;}
-nav span             	{ margin: 0px 10px 0px 0px;	width: 100%; display: inline-block;}
-#ErrorMsgs          	{ color: #f61; font-size: smaler}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 16px Georgia, serif;
+}
+
+#page-wrap {
+    margin: 2% auto;
+    color: white;
+}
+
+#page-wrap>.main {
+    border: 1px solid #999;
+    padding: 1%;
+    margin-bottom: 1px;
+    color: black;
+}
+
+section>div {
+    padding: 5px;
+}
+
+header,
+nav,
+section {
+    background: #eee;
+    text-align: center;
+}
+
+footer {
+    background: #eee;
+    text-align: center;
+}
+
+nav span {
+    margin: 0px 10px 0px 0px;
+    width: 100%;
+    display: inline-block;
+}
+
+#ErrorMsgs {
+    color: #f61;
+    font-size: smaler
+}
+
+
+/* desde aqui css añadido */
+
+.error {
+    color: darkred;
+}
+
+.success {
+    color: darkgreen;
+}
+
+.table_Credits {
+    margin: auto;
+}
+
+.autores {
+    width: 150px;
+    height: 150px;
+}
+
+.table_Questions {
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table_QuestionForm {
+    margin: auto;
+    text-align: center;
+}
+
+.table_QuestionsXML {
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.izda {
+    text-align: right;
+    width: 40%;
+}
+
+.dcha {
+    text-align: left;
+    width: 60%;
+}
+
+.table_flogin {
+    margin: auto;
+    text-align: center;
+}
+
+.table_fregister {
+    margin: auto;
+    text-align: center;
+}
+
+#div1 {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+}
+
+#thQ {
+    background-color: #dbd2c3;
+}
+
+#s1 {
+    background-image: url("../images/quiz.png");
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: auto;
+    /* Resize the background image to cover the entire container */
+    /*background-image: linear-gradient(red, yellow);*/
+}
+
+#contadores,
+#div1 table {
+    width: 95%;
+    background-color: lightgray;
+    margin: auto;
+    text-align: center;
+}
+
+td {
+    width: 25%;
+}
+
+td,
+th {
+    padding: 5px;
+}
+
+h2 {
+    color: darkblue;
+}
+
+sup {
+    color: red;
+}

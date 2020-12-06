@@ -6,22 +6,6 @@ session_start();
 
 <head>
    <?php include '../html/Head.html' ?>
-   <style>
-      #s1 {
-         background-image: url("../images/quiz.png");
-         background-position: center;
-         /* Center the image */
-         background-repeat: no-repeat;
-         /* Do not repeat the image */
-         background-size: auto;
-         /* Resize the background image to cover the entire container */
-         /*background-image: linear-gradient(red, yellow);*/
-      }
-
-      h2 {
-         color: darkblue;
-      }
-   </style>
 </head>
 
 <body>

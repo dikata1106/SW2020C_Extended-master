@@ -22,39 +22,6 @@ session_start();
   <?php include '../html/Head.html'?>
   <script src="../js/ChangeUserState.js"></script>
   <script src="../js/RemoveUser.js"></script>
-  <style>
-    .table_Questions {
-      margin: auto;
-      border-collapse: collapse;
-      text-align: center;
-    }
-
-    td,
-    th {
-      padding: 5px;
-    }
-
-    th {
-      background-color: #dbd2c3;
-    }
-
-    h2 {
-        color: darkblue;
-    }
-
-    #div1 {
-      overflow: scroll;
-      height: 100%;
-      width: 100%;
-    }
-
-    #div1 table {
-        width: 95%;
-        background-color: lightgray;
-        margin: auto;
-        text-align: center;
-    }
-  </style>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>

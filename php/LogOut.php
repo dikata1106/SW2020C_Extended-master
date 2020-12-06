@@ -6,15 +6,7 @@ session_destroy();
 
 <head>
   <?php include '../html/Head.html' ?>
-  <style>
-    .error {
-      color: darkred;
-    }
 
-    .success {
-      color: darkgreen;
-    }
-  </style>
 </head>
 
 <body>

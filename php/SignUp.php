@@ -6,43 +6,6 @@
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/ShowImageInForm.js"></script>
     <script src="../js/CheckEmailOrPass.js"></script>
-    <style>
-        .table_fregister {
-            margin: auto;
-            text-align: center;
-        }
-
-        sup {
-            color: red;
-        }
-
-        h2 {
-            color: darkblue;
-        }
-
-        .error {
-            color: darkred;
-        }
-
-        .success {
-            color: darkgreen;
-        }
-        #div1 table {
-            width: 95%;
-            background-color: lightgray;
-            margin: auto;
-            text-align: center;
-        }
-        
-        .izda {
-            text-align: right;
-            width: 40%;
-        }
-        .dcha {
-            text-align: left;
-            width: 60%;
-        }
-    </style>
 </head>
 
 <body>

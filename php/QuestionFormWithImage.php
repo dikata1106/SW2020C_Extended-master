@@ -6,18 +6,7 @@
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script src="../js/ShowImageInForm.js"></script>
 	<!--<script src="../js/ValidateFieldsQuestion.js"></script>-->
-	<style>
-		.table_QuestionForm {
-			margin: auto;
-			text-align: center;
-		}
-		sup {
-			color: red;
-		}
-		h2 {
-            color: darkblue;
-        }
-	</style>
+
 </head>
 
 <body>

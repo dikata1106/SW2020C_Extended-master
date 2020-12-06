@@ -6,21 +6,6 @@ session_start();
 
 <head>
 	<?php include '../html/Head.html'?>
-	<style>
-		.table_Credits{
-			margin: auto;
-		}
-		td {
-  			width: 25%;
-		}
-		.autores {
-  			width: 150px;
-  			height: 150px;
-		}
-		h2 {
-			color: darkblue;
-		}
-	</style>
 </head>
 
 <body>

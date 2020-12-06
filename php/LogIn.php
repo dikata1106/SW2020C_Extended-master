@@ -5,50 +5,7 @@ session_start();
 <html>
 <head>
   <?php include '../html/Head.html' ?>
-  <style>
-    .table_flogin {
-      margin: auto;
-      text-align: center;
-    }
 
-    sup {
-      color: red;
-    }
-
-    h2 {
-      color: darkblue;
-    }
-
-    .error {
-      color: darkred;
-    }
-
-    .success {
-      color: darkgreen;
-    }
-
-    .izda {
-            text-align: right;
-            width: 40%;
-        }
-
-        .dcha {
-            text-align: left;
-            width: 60%;
-        }
-
-        #div1 table {
-            width: 95%;
-            background-color: lightgray;
-            margin: auto;
-            text-align: center;
-        }
-        #div1 {
-            overflow: scroll;
-            height: 100%;
-            width: 100%;
-        }
-  </style>
 </head>
 
 <body>

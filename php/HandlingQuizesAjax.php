@@ -30,59 +30,7 @@ if (isset($_SESSION['correo'])) {
     <script src="../js/CountQuestionsAjax.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowImageInForm.js"></script>
-    <style>
-        .table_QuestionForm {
-            margin: auto;
-            text-align: center;
-        }
 
-        sup {
-            color: red;
-        }
-
-        h2 {
-            color: darkblue;
-        }
-
-        #div1 {
-            overflow: scroll;
-            height: 100%;
-            width: 100%;
-        }
-
-        #contadores,
-        #div1 table {
-            width: 95%;
-            background-color: lightgray;
-            margin: auto;
-            text-align: center;
-        }
-
-        .table_QuestionsXML {
-            margin: auto;
-            border-collapse: collapse;
-            text-align: center;
-        }
-
-        td,
-        th {
-            padding: 5px;
-        }
-
-        #thQ {
-            background-color: #dbd2c3;
-        }
-
-        .izda {
-            text-align: right;
-            width: 40%;
-        }
-
-        .dcha {
-            text-align: left;
-            width: 60%;
-        }
-    </style>
 </head>
 
 <body>

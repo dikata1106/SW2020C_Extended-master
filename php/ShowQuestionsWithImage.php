@@ -22,33 +22,7 @@ if (isset($_SESSION['correo'])) {
 
 <head>
   <?php include '../html/Head.html' ?>
-  <style>
-    .table_Questions {
-      margin: auto;
-      border-collapse: collapse;
-      text-align: center;
-    }
 
-    td,
-    th {
-      padding: 5px;
-    }
-
-    th {
-      background-color: #dbd2c3;
-    }
-
-    #div1 {
-      overflow: scroll;
-      height: 100%;
-      width: 100%;
-    }
-
-    #div1 table {
-      width: 95%;
-      background-color: lightgray;
-    }
-  </style>
 </head>
 
 <body>
