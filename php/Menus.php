@@ -11,7 +11,9 @@
     <span id="registro"><a href="SignUp.php">Registro</a></span>
     <span id="login"><a href="LogIn.php">Login</a></span>
     <span id="logout"><a href="LogOut.php">Logout</a></span>
+    <span id="Contraseña"><a href='RestablecerContraseña.php'>Restablecer Contraseña</a></span>
     <!--<span id="logout" class="right" style="display:none;"><a href="/logout">Logout</a></span>-->
+
   </header>
   <nav class='main' id='n1' role='navigation'>
     <!--
@@ -53,6 +55,7 @@
     echo "<span id='verXSL'> <a id='ver3' href='ejemplotransformar1.php'> Ver preguntas XSL </a> </span>";
     echo "<span id='admin'> <a id='adm' href='HandlingAccounts.php'> Gestionar cuentas </a> </span>";
     echo "<span id='creditos'> <a id='cre' href='Credits.php'> Creditos </a> </span>";
+
     /*
     function getImagenDeBD()
     {
@@ -72,16 +75,16 @@
     }
     */
 
-    if(isset($_SESSION['correo'])){	
-      if($_SESSION['correo'] == "admin@ehu.es"){
+    if (isset($_SESSION['correo'])) {
+      if ($_SESSION['correo'] == "admin@ehu.es") {
         echo "<script>LogInAdmin();</script>";
-        echo "<script> $('#h1').append('<p>" .$_SESSION['correo']. "</p>'); </script>";
-      }else{
+        echo "<script> $('#h1').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
+      } else {
         echo "<script>showOnLogIn();</script>";
-        echo "<script> $('#h1').append('<p>" .$_SESSION['correo']. "</p>'); </script>";
+        echo "<script> $('#h1').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
       }
-    }else{
-       echo "<script>showOnNotLogIn();</script>";
+    } else {
+      echo "<script>showOnNotLogIn();</script>";
     }
     ?>
   </nav>
