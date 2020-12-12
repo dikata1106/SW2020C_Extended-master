@@ -34,7 +34,7 @@ if (isset($_REQUEST['dirCorreo'])) {
 				<li>Si todo va bien la página te notificará y habrás cambiado tu contraseña.</li>
 			</ol>
 			<h3>Link a la página de recuperación:</h3>
-			<h2><a href ='document.location.href=\'RestablecerContraseñaCodigo.php\''>Restablecer Contraseña</a></h2>
+			<h2><a href ='https://ws20g13.000webhostapp.com/ws20g13_Extended-master/php/RestablecerContrase%c3%b1aCodigo.php'>Restablecer Contraseña</a></h2>
 			<h3>Código de recuperación:</h3>
 			<h2>" . $codigo . "</h2>
 			</body>
