@@ -1,28 +1,20 @@
 <?php
-session_start();
+    session_start();
 
-if (isset($_SESSION['correo'])) {
-    if ($_SESSION['correo'] == "admin@ehu.es") {
-        echo
-            "<script> 
-					alert('Debes de iniciar sesion como usuario');
-                    window.location.href='Layout.php';
-				</script>";
+    if (isset($_SESSION['correo'])) {
+        if ($_SESSION['correo'] == "admin@ehu.es") {
+            echo "<script> window.location.href='Layout.php'; alert('Debes iniciar sesion como usuario'); </script>";
+            exit(1);
+        }
+    } else {
+        echo "<script> window.location.href = 'Layout.php'; alert('Debes iniciar sesion como usuario'); </script>";
+        exit(1);
     }
-} else {
-    echo
-        "<script> 
-      alert('Debes de iniciar sesion como usuario');
-      window.location.href = 'Layout.php';
-    </script>";
-}
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title> Insertar pregunta con AJAX </title>
-
     <?php include '../html/Head.html' ?>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/AddQuestionsAjax.js"></script>
@@ -30,19 +22,14 @@ if (isset($_SESSION['correo'])) {
     <script src="../js/CountQuestionsAjax.js"></script>
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowImageInForm.js"></script>
-
 </head>
 
 <body>
     <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
         <div id="div1">
-
             <form id='fquestion' name='fquestion' enctype='multipart/form-data'>
-
-
                 <table class="table_QuestionForm">
-
                     <tr>
                         <th colspan="2">
                             <h2>Insertar pregunta</h2><br />
@@ -50,7 +37,8 @@ if (isset($_SESSION['correo'])) {
                     </tr>
                     <tr>
                         <td class="izda">Direccion de correo<sup>*</sup></td>
-                        <td class="dcha"><input type="text" size="75" id="dirCorreo" name="Direccion de correo" value="<?php echo $_SESSION['correo'] ?>" readonly></td>
+                        <td class="dcha"><input type="text" size="75" id="dirCorreo" name="Direccion de correo"
+                                value="<?php echo $_SESSION['correo'] ?>" readonly></td>
                     </tr>
                     <tr>
                         <td class="izda">Enunciado de pregunta<sup>*</sup></td>
@@ -58,19 +46,23 @@ if (isset($_SESSION['correo'])) {
                     </tr>
                     <tr>
                         <td class="izda">Respuesta correcta<sup>*</sup></td>
-                        <td class="dcha"><input type="text" size="75" id="respuestaCorrecta" name="Respuesta correcta"></td>
+                        <td class="dcha"><input type="text" size="75" id="respuestaCorrecta" name="Respuesta correcta">
+                        </td>
                     </tr>
                     <tr>
                         <td class="izda">Respuesta incorrecta 1<sup>*</sup></td>
-                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta1" name="Respuesta incorrecta 1"></td>
+                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta1"
+                                name="Respuesta incorrecta 1"></td>
                     </tr>
                     <tr>
                         <td class="izda">Respuesta incorrecta 2<sup>*</sup></td>
-                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta2" name="Respuesta incorrecta 2"></td>
+                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta2"
+                                name="Respuesta incorrecta 2"></td>
                     </tr>
                     <tr>
                         <td class="izda">Respuesta incorrecta 3<sup>*</sup></td>
-                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta3" name="Respuesta incorrecta 3"></td>
+                        <td class="dcha"><input type="text" size="75" id="respuestaIncorrecta3"
+                                name="Respuesta incorrecta 3"></td>
                     </tr>
                     <tr>
                         <td class="izda">Tema<sup>*</sup></td>

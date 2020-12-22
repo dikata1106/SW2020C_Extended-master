@@ -1,21 +1,20 @@
 <?php
-session_start();
-session_destroy();
+  session_start();
+  session_destroy();
 ?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
   <?php include '../html/Head.html' ?>
-
 </head>
 
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-      <?php
-      echo "<script> alert(\"¡Hasta pronto!\"); document.location.href='Layout.php'; </script>";
-      ?>
+      <?php echo "<script> document.location.href='Layout.php';  alert(\"¡Hasta pronto!\"); </script>"; ?>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (isset($_SESSION['correo'])) {
+        echo "<script> window.location.href='Layout.php'; alert('Primero debe cerrar sesion'); </script>";
+        exit(1);
+      }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -52,79 +59,57 @@
                     </tr>
                 </table>
             </form>
-            <div>
             <?php
-            if (isset($_REQUEST['dirCorreo'])) {
-                $exprMail = "/((^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$)|^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$)/";
-                $exprMailAlu = "/^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$/";
-                $exprMailProf = "/^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$/";
-                $exprPass = "/^.{6,}$/";
-                $exprNAP = "/(\w.+\s).+/";
-                $tipo = $_REQUEST['tipoUsu'];
-                $mail = $_REQUEST['dirCorreo'];
-                $nAp = $_REQUEST['nAp'];
-                $pass1 = $_REQUEST['pass1'];
-                $pass2 = $_REQUEST['pass2'];
-                $imagen = $_FILES['file']['tmp_name'];
-                $estado = 'Activo';
-                /* debugger
-                        echo $tipo, $mail, $nAp, $pass1, $pass2, $imagen;
-                        if(!isset($tipo)) echo "tipo ";
-                        if(!isset($mail)) echo "mail ";
-                        if(!isset($nAp)) echo "nAp ";
-                        if(!isset($pass1)) echo "pass1 ";
-                        if(!isset($pass2)) echo "pass2 ";
-                        */
-                if (!isset($tipo, $mail, $nAp, $pass1, $pass2)) {
-                    echo "<p class=\"error\">PHP error: variables indefinidas. Rellene bien el formulario<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if (empty($tipo) || empty($mail) || empty($nAp) || empty($pass1) || empty($pass2)) {
-                    echo "<p class=\"error\">¡Complete todos los campos obligatorios (*)!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if (!preg_match($exprMail, $mail)) {
-                    echo "<p class=\"error\">¡Formato de correo electronico invalido!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if ((preg_match($exprMailAlu, $mail) && $tipo != "1") || (preg_match($exprMailProf, $mail) && $tipo != "2")) {
-                    echo "<p class=\"error\">¡Formato de correo incorrecto para el tipo de usuario seleccionado!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if (!preg_match($exprNAP, $nAp)) {
-                    echo "<p class=\"error\">¡Debe insertar minimo un nombre y un apellido!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if (!preg_match($exprPass, $pass1) || !preg_match($exprPass, $pass2)) {
-                    echo "<p class=\"error\">¡Longitud minima de la contraseña debe ser de 6 caracteres!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else if ($pass1 != $pass2) {
-                    echo "<p class=\"error\">¡Las contraseñas no coinciden!<p><br/>";
-                    // echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                } else {
-                    $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
-                    if (!$mysqli) {
-                        die("Fallo al conectar a MySQL: " . mysqli_connect_error());
-                        echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-                    }
-                    $pass = crypt($pass1, './0-9A-Za-z');
-                    if ($imagen == "") {
-                        $imagen = "../images/anonimo.jpg";
-                    }
-                    $imagen_b64 = base64_encode(file_get_contents($imagen));
-                    $sql = "INSERT INTO usuarios(tipousu, email, nomap, pass, estado, imagen) VALUES ('$tipo', '$mail', '$nAp', '$pass', '$estado', '$imagen_b64');";
-                    if (!mysqli_query($mysqli, $sql)) {
-                        die("Fallo al insertar en la BD: " . mysqli_error($mysqli));
-                        echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
+                if (isset($_REQUEST['dirCorreo'])) {
+                    $exprMail = "/((^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$)|^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$)/";
+                    $exprMailAlu = "/^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$/";
+                    $exprMailProf = "/^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$/";
+                    $exprPass = "/^.{6,}$/";
+                    $exprNAP = "/(\w.+\s).+/";
+                    $tipo = $_REQUEST['tipoUsu'];
+                    $mail = $_REQUEST['dirCorreo'];
+                    $nAp = $_REQUEST['nAp'];
+                    $pass1 = $_REQUEST['pass1'];
+                    $pass2 = $_REQUEST['pass2'];
+                    $imagen = $_FILES['file']['tmp_name'];
+                    $estado = 'Activo';
+                    if (!isset($tipo, $mail, $nAp, $pass1, $pass2)) {
+                        echo "<p class=\"error\">PHP error: variables indefinidas. Rellene bien el formulario<p><br/>";
+                    } else if (empty($tipo) || empty($mail) || empty($nAp) || empty($pass1) || empty($pass2)) {
+                        echo "<p class=\"error\">¡Complete todos los campos obligatorios (*)!<p><br/>";
+                    } else if (!preg_match($exprMail, $mail)) {
+                        echo "<p class=\"error\">¡Formato de correo electronico invalido!<p><br/>";
+                    } else if ((preg_match($exprMailAlu, $mail) && $tipo != "1") || (preg_match($exprMailProf, $mail) && $tipo != "2")) {
+                        echo "<p class=\"error\">¡Formato de correo incorrecto para el tipo de usuario seleccionado!<p><br/>";
+                    } else if (!preg_match($exprNAP, $nAp)) {
+                        echo "<p class=\"error\">¡Debe insertar minimo un nombre y un apellido!<p><br/>";
+                    } else if (!preg_match($exprPass, $pass1) || !preg_match($exprPass, $pass2)) {
+                        echo "<p class=\"error\">¡Longitud minima de la contraseña debe ser de 6 caracteres!<p><br/>";
+                    } else if ($pass1 != $pass2) {
+                        echo "<p class=\"error\">¡Las contraseñas no coinciden!<p><br/>";
                     } else {
-                        // echo "<p class=\"success\">Registrado correctamente<p><br/>";
-                        // echo "<span><a href='LogIn.php'>Log In</a></span>";
-                        echo "<script> alert(\"Registrado correctamente\"); document.location.href='LogIn.php'; </script>";
+                        $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
+                        if (!$mysqli) {
+                            die("Fallo al conectar a MySQL: " . mysqli_connect_error());
+                            echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
+                        }
+                        $pass = crypt($pass1, './0-9A-Za-z');
+                        if ($imagen == "") {
+                            $imagen = "../images/anonimo.jpg";
+                        }
+                        $imagen_b64 = base64_encode(file_get_contents($imagen));
+                        $sql = "INSERT INTO usuarios(tipousu, email, nomap, pass, estado, imagen) VALUES ('$tipo', '$mail', '$nAp', '$pass', '$estado', '$imagen_b64');";
+                        if (!mysqli_query($mysqli, $sql)) {
+                            die("Fallo al insertar en la BD: " . mysqli_error($mysqli));
+                            echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
+                        } else {
+                            echo "<script> alert(\"Registrado correctamente\"); document.location.href='LogIn.php'; </script>";
+                        }
+                        mysqli_close($mysqli);
                     }
-                    // Cerrar conexión
-                    mysqli_close($mysqli);
-                    // echo "Close OK.";
                 }
-            }
             ?>
         </div>
-        </div>
-        
     </section>
     <?php include '../html/Footer.html' ?>
 </body>

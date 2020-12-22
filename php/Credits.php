@@ -1,6 +1,7 @@
 <?php
-session_start();
+	session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,7 @@ session_start();
 <body>
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
-		<div>
+		<div id="div1">
 			<table class="table_Credits">
 				<tr><th colspan="2"><h2>DATOS DEL AUTOR/AUTORES</h2><br/></th ></tr>
 				<tr>

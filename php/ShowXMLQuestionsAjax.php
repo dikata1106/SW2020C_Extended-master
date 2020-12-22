@@ -1,6 +1,6 @@
 <?php
   //echo "<br/>";
-  echo '<table border="1px" class="table_QuestionsXML"> <tr> <th id="thQ"> AUTOR </th> <th id="thQ"> ENUNCIADO </th> <th id="thQ"> RESPUESTA </th> </tr>';
+  echo '<table border="1px" class="table_QuestionsXML"> <tr id="thQ"> <th> AUTOR </th> <th> ENUNCIADO </th> <th> RESPUESTA </th> </tr>';
   $xml = simplexml_load_file("../xml/Questions.xml");
   foreach ($xml->children() as $assessmentItem) {
     $atributos = $assessmentItem->attributes();

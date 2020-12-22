@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+	session_start();
 ?>
 <html>
 
@@ -14,32 +13,42 @@ session_start();
 <body>
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
-		<center>
-			<table border=1>
-				<tr>
-					<th>
-						Recuperación de contraseña
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<form name="fpass" id="fpass">
-							<p>Introduce tu e-mail de recuperación*: <input type="email" name="dirCorreo" id="dirCorreo"></p>
-							<div id="CheckEmail"></div>
-							<center>
-								<input type='button' id='Recuperar' value='Enviar solicitud' onClick='RestaurarContraseña()'> <input type='reset' value='Limpiar'>
-							</center>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</center>
-		<br>
-		<p>Nota: Para poder realizar la recuperación de su contraseña ha de seguir los pasos indicados en el correo que se le hará llegar. En caso de que no lo encuentre mire en "spam".</p>
+		<div id="div1">
+			<form name="fpass" id="fpass">
+				<table id="table_recuperacion1">
+					<tr>
+						<th colspan="2">
+							<h2>Recuperación de contraseña </h2><br />
+						</th>
+					</tr>
+					<tr>
+						<td class="izda">
+							Introduce tu e-mail de recuperación<sup>*</sup>
+						</td>
+						<td class="dcha">
+							<input type="email" name="dirCorreo" id="dirCorreo" size="50">
+							<span id="CheckEmail"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type='button' id='Recuperar' value='Enviar'
+								onClick='RestaurarContraseña()'>
+							<input type='reset' value='Limpiar'>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Nota: Para poder realizar la recuperación de su contraseña ha de seguir los pasos indicados
+							en el correo que se le hará llegar. En caso de que no lo encuentre mire en "spam"
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
 		<div id='message'></div>
 	</section>
 	<?php include '../html/Footer.html' ?>
-
 </body>
 
 </html>

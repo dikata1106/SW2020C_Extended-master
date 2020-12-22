@@ -67,6 +67,18 @@ nav span {
     height: 150px;
 }
 
+.table_recuperacion2 {
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table_recuperacion1 {
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
 .table_Questions {
     margin: auto;
     border-collapse: collapse;
@@ -104,14 +116,14 @@ nav span {
     text-align: center;
 }
 
+.thQ {
+    background-color: #dcc296;
+}
+
 #div1 {
     overflow: scroll;
     height: 100%;
     width: 100%;
-}
-
-#thQ {
-    background-color: #dbd2c3;
 }
 
 #s1 {
