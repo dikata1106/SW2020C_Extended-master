@@ -2,17 +2,19 @@
 session_start();
 
 if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
-	echo "<script> window.location.href=\'Layout.php\';
-	alert('No tienes permitido acceder a esta página'); </script>";
+	echo "<script> 	alert('No tienes permitido acceder a esta página'); window.location.href=\'Layout.php\'; </script>";
+	exit(1);
 }
 ?>
+
+<!DOCTYPE html>
 <html>
 
 	<head>
 		<?php include '../html/Head.html' ?>
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../js/CheckEmailOrPass.js"></script>
-	<script src="../js/CambiarContraseña.js"></script>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../js/CheckEmailOrPass.js"></script>
+		<script src="../js/CambiarContraseña.js"></script>
 	</head>
 	
 	<body>
@@ -74,11 +76,9 @@ if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
 						</tr>
 					</table>
 				</form>
-	
-	
 			</div>
 			<div id='message'>
-				<div>
+			<div>
 		</section>
 		<?php include '../html/Footer.html' ?>
 	

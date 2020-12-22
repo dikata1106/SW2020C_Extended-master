@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['correo'])) {
-        echo "<script> window.location.href='Layout.php'; alert('Primero debe cerrar sesion'); </script>";
+        echo "<script> alert('Primero debe cerrar sesion'); window.location.href='Layout.php'; </script>";
         exit(1);
       }
 ?>

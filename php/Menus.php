@@ -5,14 +5,22 @@
   p {
     color: maroon;
   }
+  span {
+    margin: 5px;
+  }
 </style>
 <div id='page-wrap'>
 
   <header class='main' id='h1'>
+  <div id="header">
+    <div id = "links">
     <span id="registro"><a href="SignUp.php">Registro</a></span>
+    <span id="Contraseña"><a href='RestablecerContraseña.php'>Restablecer Contraseña</a></span>
     <span id="login"><a href="LogIn.php">Login</a></span>
     <span id="logout"><a href="LogOut.php">Logout</a></span>
-    <span id="Contraseña"><a href='RestablecerContraseña.php'>Restablecer Contraseña</a></span>
+    </div>
+    <div id = "info"></div>
+    </div>
   </header>
 
   <nav class='main' id='n1' role='navigation'>
@@ -50,15 +58,16 @@
       }
 
     if (isset($_SESSION['correo'])) {
+      echo '<script> $("#info").append("<img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/>");  </script>';
+    
       if ($_SESSION['correo'] == "admin@ehu.es") {
         echo "<script>LogInAdmin();</script>";
-        echo "<script> $('#h1').append('<span>" . $_SESSION['correo'] . "</span>'); </script>";
+        echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
       } else {
         echo "<script>showOnLogIn();</script>";
-        echo "<script> $('#h1').append('<span>" . $_SESSION['correo'] . "</span>'); </script>";
+        echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
       }
-      echo '<script> $("#h1").append("<span><img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/></span>");  </script>';
-    } else {
+     } else {
       echo "<script>showOnNotLogIn();</script>";
     }
     ?>

@@ -3,11 +3,11 @@
 
     if (isset($_SESSION['correo'])) {
         if ($_SESSION['correo'] == "admin@ehu.es") {
-            echo "<script> window.location.href='Layout.php'; alert('Debes iniciar sesion como usuario'); </script>";
+            echo "<script> alert('Debes iniciar sesion como usuario'); window.location.href='Layout.php'; </script>";
             exit(1);
         }
     } else {
-        echo "<script> window.location.href = 'Layout.php'; alert('Debes iniciar sesion como usuario'); </script>";
+        echo "<script> alert('Debes iniciar sesion como usuario'); window.location.href = 'Layout.php'; </script>";
         exit(1);
     }
 ?>

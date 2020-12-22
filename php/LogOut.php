@@ -14,7 +14,7 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-      <?php echo "<script> document.location.href='Layout.php';  alert(\"¡Hasta pronto!\"); </script>"; ?>
+      <?php echo "<script> alert(\"¡Hasta pronto!\"); document.location.href='Layout.php'; </script>"; ?>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
