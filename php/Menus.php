@@ -5,15 +5,6 @@
   p {
     color: maroon;
   }
-  .sessImg {
-    position: absolute;
-    margin-top: 0%;
-    margin-left: 90%;
-    margin-right: 5%;
-    margin-bottom: 90%;
-    height: 5%;
-    width: 5%;
-}
 </style>
 <div id='page-wrap'>
 
@@ -61,12 +52,12 @@
     if (isset($_SESSION['correo'])) {
       if ($_SESSION['correo'] == "admin@ehu.es") {
         echo "<script>LogInAdmin();</script>";
-        echo "<script> $('#h1').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
+        echo "<script> $('#h1').append('<span>" . $_SESSION['correo'] . "</span>'); </script>";
       } else {
         echo "<script>showOnLogIn();</script>";
-        echo "<script> $('#h1').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
+        echo "<script> $('#h1').append('<span>" . $_SESSION['correo'] . "</span>'); </script>";
       }
-      echo '<script> $("#h1").append("<div class=\"sessImg\"><img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/></div>");  </script>';
+      echo '<script> $("#h1").append("<span><img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/></span>");  </script>';
     } else {
       echo "<script>showOnNotLogIn();</script>";
     }
