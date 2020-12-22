@@ -10,7 +10,7 @@ function showOnLogIn() {
   $("#verXML").hide();
   $("#verXSL").hide();
   $("#admin").hide();
-  //$("#h1").append("<img width=\"50\" height=\"50\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Img\"/>");
+  $("#loginSocial").hide();
 }
 
 function LogInAdmin() {
@@ -25,7 +25,7 @@ function LogInAdmin() {
   $("#verXML").hide();
   $("#verXSL").hide();
   $("#admin").show();
-  //$("#h1").append("<img width=\"50\" height=\"50\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Img\"/>");
+  $("#loginSocial").hide();
 }
 
 function showOnNotLogIn() {
@@ -40,6 +40,22 @@ function showOnNotLogIn() {
   $("#verXML").hide();
   $("#verXSL").hide();
   $("#admin").hide();
+  $("#loginSocial").show();
+}
+
+function showOnLogG() {
+  $("#registro").hide();
+  $("#Contraseña").hide();
+  $("#login").hide();
+  $("#logout").show();
+  $("#inicio").show();
+  $("#insertar").show();
+  $("#creditos").show();
+  $("#verBD").show();
+  $("#verXML").hide();
+  $("#verXSL").hide();
+  $("#admin").hide();
+  $("#loginSocial").hide();
 }
 
 $(document).ready(function () {});

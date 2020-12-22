@@ -15,9 +15,15 @@
   <div id="header">
     <div id = "links">
     <span id="registro"><a href="SignUp.php">Registro</a></span>
-    <span id="Contraseña"><a href='RestablecerContraseña.php'>Restablecer Contraseña</a></span>
+    <span id="Contraseña"><a href='RestablecerContrasena.php'>Restablecer Contraseña</a></span>
     <span id="login"><a href="LogIn.php">Login</a></span>
+    <span id="loginSocial"><a href="LoginSocial.php"><img src="../images/g.png" height="30px" width="30px" alt="Sign up with Google" /></a></span>
     <span id="logout"><a href="LogOut.php">Logout</a></span>
+    <?php
+			if(isset($_SESSION['picture'])){
+			echo "<img src ='".$_SESSION['picture']."' width=\"60\" height=\"65\">";
+			}
+		?>
     </div>
     <div id = "info"></div>
     </div>
@@ -59,7 +65,6 @@
 
     if (isset($_SESSION['correo'])) {
       echo '<script> $("#info").append("<img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/>");  </script>';
-    
       if ($_SESSION['correo'] == "admin@ehu.es") {
         echo "<script>LogInAdmin();</script>";
         echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
@@ -67,7 +72,9 @@
         echo "<script>showOnLogIn();</script>";
         echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
       }
-     } else {
+    } else if (isset($_SESSION['picture'])){
+			echo "<script>showOnLogG();</script>";
+		} else {
       echo "<script>showOnNotLogIn();</script>";
     }
     ?>

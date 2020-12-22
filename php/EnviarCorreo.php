@@ -10,11 +10,15 @@ if (isset($_REQUEST['dirCorreo'])) {
 
 		$sql = "SELECT * FROM usuarios WHERE email=\"" . $_REQUEST['dirCorreo'] . "\";";
 		$resultado = mysqli_query($mysqli, $sql, MYSQLI_USE_RESULT);
-		if ($resultado) {
+		if (!$resultado) {
+            die("Error: " . mysqli_error($mysqli));
+        }
+		$row = mysqli_fetch_array($resultado);
+		if (!empty($row)){
 			$email = $_REQUEST['dirCorreo'];
 
 			$to = $email;
-			$subject = "Recuperación de contraseña";
+			$subject = "Recuperación de contrasena";
 
 			$codigo = rand(10000, 99999);
 
@@ -24,19 +28,19 @@ if (isset($_REQUEST['dirCorreo'])) {
 			$message = "
 			<html>
 			<head>
-			<tittle>Recuperación de contraseña</tittle>
+			<tittle>Recuperacion de contrasena</tittle>
 			</head>
 			<body>
-			<h3>Pasos a realizar para recuperrar tu contraseña:</h3>
+			<h3>Pasos a realizar para recuperrar tu contrasena:</h3>
 			<ol>
 				<li>Entra en el link proporcionado.</li>
-				<li>Introduce el codigo proporcionado y la nueva contraseña.</li>
-				<li>Si todo va bien la página te notificará y habrás cambiado tu contraseña.</li>
+				<li>Introduce el codigo proporcionado y la nueva contrasena.</li>
+				<li>Si todo va bien la pagina te lo notificara y habras cambiado tu contrasena.</li>
 			</ol>
-			<h3>Link a la página de recuperación:</h3>
-			<h2><a href ='https://ws20g13.000webhostapp.com/ws20g13_Extended-master/php/RestablecerContrase%c3%b1aCodigo.php'>Restablecer Contraseña</a></h2>
-			<h3>Código de recuperación:</h3>
-			<h2>" . $codigo . "</h2>
+			<h3>Link a la pagina de recuperacion:</h3>
+			<h4><a href ='https://ws20g13.000webhostapp.com/ws20g13_Extended-master/php/RestablecerContrasenaCodigo.php'>Restablecer Contrasena</a></h2>
+			<h3>Codigo de recuperacion:</h3>
+			<h4 style='color:red'>" . $codigo . "</h2>
 			</body>
 			</html>
 			";
