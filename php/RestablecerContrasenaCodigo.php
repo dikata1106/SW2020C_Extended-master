@@ -81,7 +81,6 @@ if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
 				// echo '<script> alert("Rellene el formulario con el codigo proporcionado por correo electronico"); </script>';
 				// || !isset($_REQUEST['dirCorreo']) || !isset($_REQUEST['Pass']) || !isset($_REQUEST['Pass2']) || !isset($_REQUEST['Code'])
 				if (isset($_REQUEST['dirCorreo'])) {
-					echo 1;
 					if(!isset($_REQUEST['dirCorreo']) || !isset($_REQUEST['Pass']) || !isset($_REQUEST['Pass2']) || !isset($_REQUEST['Code'])) {
 						echo "<p class=\"error\">PHP error: variables indefinidas. Rellene bien el formulario<p>";
 					} else if (empty($_REQUEST['dirCorreo']) || empty($_REQUEST['Pass']) || empty($_REQUEST['Pass2']) || empty($_REQUEST['Code'])) {
