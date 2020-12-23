@@ -1,10 +1,44 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
-	echo "<script> 	alert('No tienes permitido acceder a esta página'); window.location.href=\'Layout.php\'; </script>";
-	exit(1);
-}
+	if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
+		echo "<script> 	alert('No tienes permitido acceder a esta página'); window.location.href=\'Layout.php\'; </script>";
+		exit(1);
+	} else {
+		include 'DbConfig.php';
+
+		if (isset($_REQUEST['dirCorreo'])) {
+			if(!isset($_REQUEST['dirCorreo']) || !isset($_REQUEST['Pass']) || !isset($_REQUEST['Pass2']) || !isset($_REQUEST['Code'])) {
+				echo "<script> alert('PHP error: variables indefinidas. Rellene bien el formulario'); </script>";
+			} else if (empty($_REQUEST['dirCorreo']) || empty($_REQUEST['Pass']) || empty($_REQUEST['Pass2']) || empty($_REQUEST['Code'])) {
+				echo "<script> alert('Rellene todos los campos obligatorios(*)!'); </script>";
+			} else if ($_REQUEST['dirCorreo'] != $_SESSION['restablecer']) {
+				echo "<script> alert('No se ha solicitado restablecimiento de correo del email introducido'); </script>";
+			} else if ($_REQUEST['Pass'] != $_REQUEST['Pass2']) {
+				echo "<script> alert('Las contraseñas no coinciden'); </script>";
+			} else if ($_REQUEST['Code'] != $_SESSION['codigo']) {
+				echo "<script> alert('Codigo invalido'); </script>";
+			} else {
+				$mysqli = mysqli_connect($server, $user, $pass, $basededatos);
+				if (!$mysqli) {
+					die("Fallo al conectar a MySQL: " . mysqli_connect_error());
+				}
+				$email = $_REQUEST['dirCorreo'];
+				$pass = crypt($_REQUEST['Pass'], './0-9A-Za-z');
+				// echo $_REQUEST['Pass'], $email, $pass;
+				$sql = "UPDATE usuarios SET pass='$pass' WHERE email='$email';";
+				//echo $sql;
+				if (!mysqli_query($mysqli, $sql)) {
+					die("Error: " . mysqli_error($mysqli));
+				} else {
+					mysqli_close($mysqli);
+					unset($_SESSION['restablecer']);
+					unset($_SESSION['codigo']);
+					echo "<script> alert('Contraseña restablecida'); document.location.href='LogIn.php'; </script>";
+				}
+			}
+		}
+	}
 
 ?>
 
@@ -64,7 +98,7 @@ if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input type='submit' id='submit' value='Cambiar contrasena'> <input type='reset' value='Limpiar' onClick="Clean()">
+								<input type='submit' id='send' value='Cambiar contrasena'> <input type='reset' value='Limpiar' onClick="Clean()">
 							</td>
 						</tr>
 						<tr>
@@ -76,45 +110,9 @@ if (!isset($_SESSION['restablecer']) || !isset($_SESSION['codigo'])) {
 						</tr>
 					</table>
 				</form>
-				<?php
-				include 'DbConfig.php';
-				// echo '<script> alert("Rellene el formulario con el codigo proporcionado por correo electronico"); </script>';
-				// || !isset($_REQUEST['dirCorreo']) || !isset($_REQUEST['Pass']) || !isset($_REQUEST['Pass2']) || !isset($_REQUEST['Code'])
-				if (isset($_REQUEST['dirCorreo'])) {
-					if(!isset($_REQUEST['dirCorreo']) || !isset($_REQUEST['Pass']) || !isset($_REQUEST['Pass2']) || !isset($_REQUEST['Code'])) {
-						echo "<p class=\"error\">PHP error: variables indefinidas. Rellene bien el formulario<p>";
-					} else if (empty($_REQUEST['dirCorreo']) || empty($_REQUEST['Pass']) || empty($_REQUEST['Pass2']) || empty($_REQUEST['Code'])) {
-						echo "<p class=\"error\">Rellene todos los campos obligatorios(*)!<p>";
-					} else if ($_REQUEST['dirCorreo'] != $_SESSION['restablecer']) {
-						echo "<p class=\"error\">No se ha solicitado restablecimiento de correo del email introducido<p>";
-					} else if ($_REQUEST['Pass'] != $_REQUEST['Pass2']) {
-						echo "<p class=\"error\">Las contraseñas no coinciden<p>";
-					} else if ($_REQUEST['Code'] != $_SESSION['codigo']) {
-						echo "<p class=\"error\">Codigo invalido<p>";
-					} else {
-						echo 2;
-						$mysqli = mysqli_connect($server, $user, $pass, $basededatos);
-						if (!$mysqli) {
-							die("Fallo al conectar a MySQL: " . mysqli_connect_error());
-						}
-						$email = $_REQUEST['dirCorreo'];
-						$pass = crypt($_REQUEST['Pass']);
-						$sql = "UPDATE usuarios SET pass='$pass' WHERE email='$email';";
-						echo $sql;
-						if (!mysqli_query($mysqli, $sql)) {
-							die("Error: " . mysqli_error($mysqli));
-						}
-						mysqli_close($mysqli);
-						unset($_SESSION['restablecer']);
-						unset($_SESSION['codigo']);
-						//echo "<script> alert('Contraseña restablecida'); document.location.href='LogIn.php'; </script>";
-					}
-				}
-			?>
 			</div>
 		</section>
 		<?php include '../html/Footer.html' ?>
-	
 	</body>
 	
-	</html>
+</html>
