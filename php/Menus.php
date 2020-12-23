@@ -19,13 +19,14 @@
     <span id="login"><a href="LogIn.php">Login</a></span>
     <span id="loginSocial"><a href="LoginSocial.php"><img src="../images/g.png" height="30px" width="30px" alt="Sign up with Google" /></a></span>
     <span id="logout"><a href="LogOut.php">Logout</a></span>
+    </div>
+    <div id = "info">
     <?php
 			if(isset($_SESSION['picture'])){
-			echo "<img src ='".$_SESSION['picture']."' width=\"60\" height=\"65\">";
+        echo '<img width="65" height="65" src="'. $_SESSION['picture'] . '"/>';
 			}
 		?>
     </div>
-    <div id = "info"></div>
     </div>
   </header>
 
@@ -64,7 +65,9 @@
       }
 
     if (isset($_SESSION['correo'])) {
-      echo '<script> $("#info").append("<img width=\"60\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\" alt=\"Imagen\"/>");  </script>';
+      if (!isset($_SESSION['picture'])) {
+        echo '<script> $("#info").append("<img width=\"65\" height=\"65\" src=\"data:image/*;base64,'.getImagenDeBD().'\"/>");  </script>';
+      }
       if ($_SESSION['correo'] == "admin@ehu.es") {
         echo "<script>LogInAdmin();</script>";
         echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
@@ -72,8 +75,10 @@
         echo "<script>showOnLogIn();</script>";
         echo "<script> $('#info').append('<p>" . $_SESSION['correo'] . "</p>'); </script>";
       }
+      
     } else if (isset($_SESSION['picture'])){
-			echo "<script>showOnLogG();</script>";
+      echo "<script>showOnLogG();</script>";
+      //echo '<script> $("#info").append("<img width="60" height="65" src="'. $_SESSION['picture'] . '"/>");  </script>';
 		} else {
       echo "<script>showOnNotLogIn();</script>";
     }

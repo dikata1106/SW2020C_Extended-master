@@ -22,9 +22,10 @@ session_start();
         <?php require ("../vendor/autoload.php");
 			//Step 1: Enter you google account credentials
 			$g_client = new Google_Client();
-			$g_client->setClientId('906531296038-91gcbpoufqh8s26g46a1a896np7brl1a.apps.googleusercontent.com');
-			$g_client->setClientSecret('z7H9tegIxS8ftbiFrpdar9aP');
-			$g_client->setRedirectUri('https://ws20g13.000webhostapp.com/ws20g13_Extended-master/php/LoginSocial.php');
+			$g_client->setClientId('994628261284-usvfr79tvs9rg5gb9o88vdek0a9asvkr.apps.googleusercontent.com');
+			$g_client->setClientSecret('HLoheMSYPOyRpBpuFigqNfC-');
+			//$g_client->setRedirectUri('https://ws20g13.000webhostapp.com/ws20g13_Extended-master/php/LoginSocial.php');
+			$g_client->setRedirectUri('http://localhost/SW2020C_Extended-master/php/LoginSocial.php');
 			$g_client->setScopes("email");
 			//Step 2 : Create the url
 			$auth_url = $g_client->createAuthUrl();
