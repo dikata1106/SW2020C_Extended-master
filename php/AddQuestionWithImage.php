@@ -43,9 +43,9 @@
           } else if (empty($mail) || empty($preg) || empty($corr) || empty($incorr1) || empty($incorr2) || empty($incorr3) || empty($complejidad) || empty($tema)) {
             echo "<p class=\"error\">¡Complete todos los campos obligatorios (*)!<p><br/>";
             echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
-          } else if (!preg_match($exprMail, $mail)) {
-            echo "<p class=\"error\">¡Formato de correo electronico invalido!<p><br/>";
-            echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
+          //} else if (!preg_match($exprMail, $mail)) {
+            //echo "<p class=\"error\">¡Formato de correo electronico invalido!<p><br/>";
+            //echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
           } else if ($mail != $_SESSION['correo']) {
             echo "<p class=\"error\">¡No puede utilizar otro correo electronico!<p><br/>";
             echo "<span><a href='javascript:history.back()'>Volver al formulario</a></span>";
