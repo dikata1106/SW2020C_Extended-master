@@ -2,8 +2,9 @@ function validarCorreo(correo) {
 
     var correoAlumno = /^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$/;
     var correoProfesor = /^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$/;
+    var correoGmail = /^[\w.+\-]+@gmail\.com$/;
 
-    if (correoAlumno.test(correo) || correoProfesor.test(correo))
+    if (correoAlumno.test(correo) || correoProfesor.test(correo) || correoGmail.test(correo))
         return true;
     else
         return false;
